@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 23, 2020 lúc 04:37 PM
--- Phiên bản máy phục vụ: 10.4.14-MariaDB
--- Phiên bản PHP: 7.2.33
+-- Thời gian đã tạo: Th10 12, 2020 lúc 05:17 PM
+-- Phiên bản máy phục vụ: 10.1.38-MariaDB
+-- Phiên bản PHP: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `categories` (
   `CategoryID` int(11) NOT NULL,
   `CategoryName` varchar(255) NOT NULL,
-  `Position` int(11) DEFAULT 0
+  `Position` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -38,10 +39,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Position`) VALUES
-(1, 'Trà', 1),
-(2, 'Bánh Mì', 0),
-(3, 'Cà Phê', 3),
-(5, 'Khác', 4);
+(1, 'DIET', 1),
+(2, 'BIRTHDAY', 0),
+(3, 'CUPCAKE', 3),
+(5, 'DRINK', 4),
+(6, 'COMBO', 4);
 
 -- --------------------------------------------------------
 
@@ -60,12 +62,7 @@ CREATE TABLE `groups` (
 
 INSERT INTO `groups` (`GroupID`, `GroupName`) VALUES
 (1, 'Admin'),
-(3, 'Khách hàng'),
-(4, 'Test'),
-(6, 'test'),
-(10, 'YN'),
-(13, 'YN1'),
-(14, 'TESTT');
+(3, 'Khách hàng');
 
 -- --------------------------------------------------------
 
@@ -83,8 +80,12 @@ CREATE TABLE `manufacturers` (
 --
 
 INSERT INTO `manufacturers` (`ManufacturerID`, `ManufacturerName`) VALUES
-(1, 'Nhóm 99'),
-(2, 'ABO');
+(1, 'ABC Bakery'),
+(2, 'Như Lan'),
+(3, 'Brodard Bakery'),
+(7, 'Tous les Jours'),
+(8, 'Givral'),
+(9, 'Dallas Cakes');
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,7 @@ INSERT INTO `manufacturers` (`ManufacturerID`, `ManufacturerName`) VALUES
 CREATE TABLE `orderitems` (
   `OrderID` int(11) NOT NULL,
   `ProductID` int(11) NOT NULL,
-  `Quantity` int(11) NOT NULL DEFAULT 0
+  `Quantity` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -103,7 +104,29 @@ CREATE TABLE `orderitems` (
 --
 
 INSERT INTO `orderitems` (`OrderID`, `ProductID`, `Quantity`) VALUES
-(31, 30, 2);
+(27, 33, 1),
+(27, 34, 1),
+(27, 36, 1),
+(27, 37, 1),
+(27, 38, 1),
+(28, 24, 1),
+(28, 25, 1),
+(28, 34, 1),
+(28, 35, 1),
+(28, 36, 1),
+(29, 30, 1),
+(29, 32, 1),
+(29, 33, 1),
+(29, 34, 1),
+(29, 35, 1),
+(29, 36, 1),
+(30, 28, 1),
+(30, 38, 1),
+(30, 39, 1),
+(30, 40, 1),
+(31, 38, 1),
+(31, 39, 2),
+(32, 38, 1);
 
 -- --------------------------------------------------------
 
@@ -126,7 +149,12 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`OrderID`, `UserID`, `AddedDate`, `Address`, `Phone`, `Sum`, `Status`) VALUES
-(31, 26, '2020-10-23 21:26:40', 'HCM', '12345', 38000, b'0');
+(27, 23, '2020-07-03 11:27:34', 'Nhà nội', '109201920', 60600000, b'0'),
+(28, 23, '2020-07-03 11:28:14', 'Ngoại tui mua cho tui', '92839283', 49690000, b'0'),
+(29, 23, '2020-07-03 11:29:01', 'Trường tui', '9283928', 96800000, b'0'),
+(30, 23, '2020-07-04 00:30:00', 'Nhà chú 5', '9283928', 63800000, b'0'),
+(31, 23, '2020-07-04 10:01:05', 'Nhà tui', '9849839', 41800000, b'0'),
+(32, 1, '2020-07-04 10:05:37', 'Nhà tui', '1298493', 13200000, b'0');
 
 -- --------------------------------------------------------
 
@@ -140,8 +168,8 @@ CREATE TABLE `products` (
   `CategoryID` int(11) NOT NULL,
   `ProductName` varchar(255) NOT NULL,
   `ImageUrl` varchar(255) NOT NULL,
-  `Price` int(11) NOT NULL DEFAULT 0,
-  `Quantity` int(11) NOT NULL DEFAULT 0,
+  `Price` int(11) NOT NULL DEFAULT '0',
+  `Quantity` int(11) NOT NULL DEFAULT '0',
   `Description` varchar(1000) NOT NULL,
   `Body` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -151,23 +179,24 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ProductID`, `ManufacturerID`, `CategoryID`, `ProductName`, `ImageUrl`, `Price`, `Quantity`, `Description`, `Body`) VALUES
-(21, 1, 1, 'Trà Sen Vàng', '452134802270_crop_TRASENVANG.png', 319, 10, 'Trà', 'Hương vị tự nhiên, thơm ngon của Trà Việt với phong cách hiện đại tại Highlands Coffee sẽ giúp bạn gợi mở vị giác của bản thân và tận hưởng một cảm giác thật khoan khoái, tươi mới.'),
-(22, 1, 1, 'Trà Thanh Đào', '151987484270_crop_TRATHANHDAO.png', 31000, 10, 'Trà', ''),
-(23, 1, 1, 'Trà Thạch Vải', '683616356270_crop_TRATHACHVAI_1.png', 39000, 10, 'Trà', 'Hương vị tự nhiên, thơm ngon của Trà Việt với phong cách hiện đại tại Highlands Coffee sẽ giúp bạn gợi mở vị giác của bản thân và tận hưởng một cảm giác thật khoan khoái, tươi mới.'),
-(24, 1, 1, 'Trà Thạch Đào', '847970534270_crop_TRATHACHDAO.png', 39000, 10, 'Trà', 'Hương vị tự nhiên, thơm ngon của Trà Việt với phong cách hiện đại tại Highlands Coffee sẽ giúp bạn gợi mở vị giác của bản thân và tận hưởng một cảm giác thật khoan khoái, tươi mới.'),
-(25, 1, 2, 'Bánh Mì Xá Xíu', '1446201144270_crop_BMCHALUAXAXIU.png', 26000, 10, 'Bánh Mì', ''),
-(26, 1, 2, ' Bánh Mì Xíu Mại', '1744980395270_crop_BMXIUMAI.png', 20000, 10, 'Bánh Mì', 'Bạn đã quá quen thuộc với Bánh mì Việt Nam. Hãy nếm thử một miếng Bánh mì ngon, giòn, nóng hổi tại Highlands Coffee. Một kết hợp hoàn hảo giữa lớp nhân chua, cay, mặn, ngọt quyện với lớp vỏ bánh mì giòn tan, mịn màng tạo ra tầng tầng lớp lớp dư vị cho thực khách. '),
-(27, 1, 2, 'Bánh Mì Thịt Nướng', '326659118270_crop_BMTHITNUONG.png', 32000, 10, 'Bánh Mì', 'Bạn đã quá quen thuộc với Bánh mì Việt Nam. Hãy nếm thử một miếng Bánh mì ngon, giòn, nóng hổi tại Highlands Coffee. Một kết hợp hoàn hảo giữa lớp nhân chua, cay, mặn, ngọt quyện với lớp vỏ bánh mì giòn tan, mịn màng tạo ra tầng tầng lớp lớp dư vị cho thực khách. '),
-(30, 1, 5, 'Bánh Chuối', '1205025424270_crop_BANHCHUOI.jpg', 19000, 10, 'Bánh Ngọt', 'Còn gì tuyệt vời hơn khi kết hợp thưởng thức đồ uống của bạn cùng với những chiếc bánh ngọt ngon tinh tế được làm thủ công ngay tại bếp bánh của Highlands Coffee. Những chiếc bánh của chúng tôi mang hương vị đặc trưng của ẩm thực Việt và còn là sự Tận Tâm, gửi gắm mà chúng tôi dành cho Quý khách hàng.'),
-(32, 1, 5, 'Bánh Đào', '574447618270_crop_MOUSSEDAO.png', 17000, 10, 'Bánh Ngọt', 'Còn gì tuyệt vời hơn khi kết hợp thưởng thức đồ uống của bạn cùng với những chiếc bánh ngọt ngon tinh tế được làm thủ công ngay tại bếp bánh của Highlands Coffee. Những chiếc bánh của chúng tôi mang hương vị đặc trưng của ẩm thực Việt và còn là sự Tận Tâm, gửi gắm mà chúng tôi dành cho Quý khách hàng.'),
-(33, 1, 5, 'Bánh CaCao', '933900418270_crop_MOUSSECACAO.png', 15000, 10, 'Bánh Ngọt', 'Còn gì tuyệt vời hơn khi kết hợp thưởng thức đồ uống của bạn cùng với những chiếc bánh ngọt ngon tinh tế được làm thủ công ngay tại bếp bánh của Highlands Coffee. Những chiếc bánh của chúng tôi mang hương vị đặc trưng của ẩm thực Việt và còn là sự Tận Tâm, gửi gắm mà chúng tôi dành cho Quý khách hàng.'),
-(34, 1, 5, 'Bánh PhôMai', '894396016270_crop_PHOMAICAPHE.jpg', 18000, 10, 'Bánh Ngọt', 'Còn gì tuyệt vời hơn khi kết hợp thưởng thức đồ uống của bạn cùng với những chiếc bánh ngọt ngon tinh tế được làm thủ công ngay tại bếp bánh của Highlands Coffee. Những chiếc bánh của chúng tôi mang hương vị đặc trưng của ẩm thực Việt và còn là sự Tận Tâm, gửi gắm mà chúng tôi dành cho Quý khách hàng.'),
-(35, 1, 5, 'Bánh ChoCoLate', '1635425670270_crop_SOCOLAHL.png', 22000, 10, 'Bánh Ngọt', 'Còn gì tuyệt vời hơn khi kết hợp thưởng thức đồ uống của bạn cùng với những chiếc bánh ngọt ngon tinh tế được làm thủ công ngay tại bếp bánh của Highlands Coffee. Những chiếc bánh của chúng tôi mang hương vị đặc trưng của ẩm thực Việt và còn là sự Tận Tâm, gửi gắm mà chúng tôi dành cho Quý khách hàng.'),
-(36, 1, 3, 'Phin Sữa Đá', '2009975044270_crop_PHIN-SUA-DA.png', 30000, 10, 'Phin Cà Phê', 'Việt Nam tự hào sở hữu một di sản văn hóa cà phê giàu có, và \'Phin\' chính là linh hồn, là nét văn hóa thưởng thức cà phê đã ăn sâu vào tiềm thức biết bao người Việt. Cà phê rang xay được chiết xuất chậm rãi từng giọt một thông qua dụng cụ lọc bằng kim loại có tên là \'Phin\', cũng giống như thể hiện sự sâu sắc trong từng suy nghĩ và chân thành trong những mối quan hệ hiện hữu. Bạn có thể tùy thích lựa chọn uống nóng hoặc dùng chung với đá, có hoặc không có sữa...'),
-(37, 1, 3, 'PhinDi ChoCo', '1269627013270_crop_PHINDI_Choco-min.png', 45000, 10, 'Cà Phê Fin.', 'Việt Nam tự hào sở hữu một di sản văn hóa cà phê giàu có, và \'Phin\' chính là linh hồn, là nét văn hóa thưởng thức cà phê đã ăn sâu vào tiềm thức biết bao người Việt. Cà phê rang xay được chiết xuất chậm rãi từng giọt một thông qua dụng cụ lọc bằng kim loại có tên là \'Phin\', cũng giống như thể hiện sự sâu sắc trong từng suy nghĩ và chân thành trong những mối quan hệ hiện hữu. Bạn có thể tùy thích lựa chọn uống nóng hoặc dùng chung với đá, có hoặc không có sữa...'),
-(38, 1, 3, 'PhinDi Hạnh Nhân', '648277329270_crop_PHINDI_Hanh_Nhan-min.png', 45000, 10, 'Phin Cà Phê', 'Việt Nam tự hào sở hữu một di sản văn hóa cà phê giàu có, và \'Phin\' chính là linh hồn, là nét văn hóa thưởng thức cà phê đã ăn sâu vào tiềm thức biết bao người Việt. Cà phê rang xay được chiết xuất chậm rãi từng giọt một thông qua dụng cụ lọc bằng kim loại có tên là \'Phin\', cũng giống như thể hiện sự sâu sắc trong từng suy nghĩ và chân thành trong những mối quan hệ hiện hữu. Bạn có thể tùy thích lựa chọn uống nóng hoặc dùng chung với đá, có hoặc không có sữa...'),
-(39, 1, 3, 'PhinDi Kem Sữa', '903613552270_crop_PHINDI_Kem_Sua-min.png', 50000, 10, 'Phin Cà Phê', 'Việt Nam tự hào sở hữu một di sản văn hóa cà phê giàu có, và \'Phin\' chính là linh hồn, là nét văn hóa thưởng thức cà phê đã ăn sâu vào tiềm thức biết bao người Việt. Cà phê rang xay được chiết xuất chậm rãi từng giọt một thông qua dụng cụ lọc bằng kim loại có tên là \'Phin\', cũng giống như thể hiện sự sâu sắc trong từng suy nghĩ và chân thành trong những mối quan hệ hiện hữu. Bạn có thể tùy thích lựa chọn uống nóng hoặc dùng chung với đá, có hoặc không có sữa...'),
-(40, 1, 3, 'Phin Đen Đá', '1952766379270_crop_CFD.png', 30000, 10, 'Phin Cà Phê', 'Việt Nam tự hào sở hữu một di sản văn hóa cà phê giàu có, và \'Phin\' chính là linh hồn, là nét văn hóa thưởng thức cà phê đã ăn sâu vào tiềm thức biết bao người Việt. Cà phê rang xay được chiết xuất chậm rãi từng giọt một thông qua dụng cụ lọc bằng kim loại có tên là \'Phin\', cũng giống như thể hiện sự sâu sắc trong từng suy nghĩ và chân thành trong những mối quan hệ hiện hữu. Bạn có thể tùy thích lựa chọn uống nóng hoặc dùng chung với đá, có hoặc không có sữa...');
+(21, 1, 1, 'High Fiber Bread', '922795919m1.jpg', 79000, 10, ' N\'High Fiber được làm từ bột mì thô giàu chất xơ của Đức với hàm lượng chất xơ cao, nhiều hạt dinh dưỡng', 'Trọng lượng thô: 360 grams\r\nHình dáng: Ổ dài, chia thành 12 lát\r\nCalories ước tính: 202 – 225 calories/100 grams\r\nHạn Sử Dụng:\r\n- Dùng trong 4 ngày ở nhiệt độ phòng thoáng mát\r\n- Dùng trong 1 tháng ở ngăn đông, lưu ý cần cột kỹ miệng túi để tránh làm khô bánh'),
+(22, 1, 1, 'Rye Caraway Bagels', '126189364m2.jpg', 80000, 10, 'Rye Bagel được làm từ bột mì đen, thêm bột mì protein cao và hạt thì là ba tư nổi tiếng', 'rọng lượng thô: 100 gram/cái\r\nHình dáng: Ổ tròn hình donut\r\nSố lượng: Túi 3 cái\r\nCalories ước tính: 259 – 280cal/100gr\r\nCách sử dụng:\r\n- Dùng bánh trong 3-4 ngày ở nơi khô thoáng kể từ ngày sản xuất\r\n- Dùng bánh trong 1 tháng ở ngăn đông kể từ ngày để vào ngăn đông'),
+(23, 1, 1, 'Mocha Hazelnut Chiffon Cake', '1193827678m3.jpg', 250000, 10, 'Được làm từ bột bánh Chiffo thượng hạng kết hợp cùng vị thơm béo của hạt dẻ', ''),
+(24, 2, 2, 'Crown Birthday Cake', '761400621m4.jpg', 690000, 10, 'Bánh Sinh Nhật Cao Tầng Vương Miện\r\n	 sang chảnh với bánh bông lan mịn xốp cùng lớp kem mềm mịn', ''),
+(25, 2, 3, 'Bánh Cầu Vòng', '10883788422.jpg', 30000, 10, 'Chiếc bánh thơm ngon với lớp vỏ ngoài giòn rụm\r\n	 kết hơp với nhân bánh táo mềm mềm đặc trưng của táo Mỹ', ''),
+(26, 1, 2, 'BlueBerry Coffee Cake', '1643007194s2.jpg', 400000, 10, 'Chiếc bánh vỏ ngoài giòn rụm kết hợp với\r\n	 những trái việt quất căng mọng đặc trưng khiến thực khách nhớ mãi.', ''),
+(28, 8, 2, 'Orange Cranbery Tart', '826400613s7.jpg', 249000, 10, 'Bánh Tart Cam làm món đặc trưng của Lappetit. \r\n	Với hương vị thơm mát của cam kết hợp với vụn bánh Cookie trải đều trên bề mặt đẹp mắt', ''),
+(29, 1, 1, 'Stripe Rubber Slide', '393316035.jpg', 6950000, 10, '', ''),
+(30, 9, 3, 'WaterMelon Sorbet', '88579726712.jpg', 60000, 10, 'Sự thanh mát của dưa hấu kết hợp với \r\n	 vị mát lạnh của đá xay là sự lựa chọn hoàn hảo cho mùa hè nóng bức', ''),
+(32, 7, 3, 'Vanilla Cupcake', '47590365314.jpg', 79000, 10, 'Vanila Cupcake với chất bánh mềm mại được làm từ tinh chất \r\n	trái Vani ngâm nhiều tháng, cho ra nước Vani thơm và an toàn cho thực khách', ''),
+(33, 2, 3, 'Bánh Dâu', '16057033376.jpg', 39000, 10, '', ''),
+(34, 2, 3, 'Bánh Chery Mĩ', '6784815137.jpg', 29000, 10, '', ''),
+(35, 8, 5, 'Americano', '725899030americano.jpg', 25000, 10, '', ''),
+(36, 8, 5, 'Coffee Latte', '127320449cafe_latte.jpg', 25000, 10, '', ''),
+(37, 8, 5, 'Cappucino', '1710568483cappuccino.jpg', 25000, 10, '', ''),
+(38, 8, 5, 'Latte Machiato', '1579086871latte_machiato.jpg', 25000, 10, '', ''),
+(39, 8, 5, 'Expresso', '1994704226espresso.jpg', 25000, 10, '', ''),
+(40, 1, 5, 'Coffee Mocha', '776358092cafe_mocha.jpg', 25000, 10, '', '');
 
 -- --------------------------------------------------------
 
@@ -190,8 +219,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`UserID`, `GroupID`, `FullName`, `UserName`, `PassWord`, `Email`) VALUES
 (1, 1, 'admin', 'admin', 'c4ca4238a0b923820dcc509a6f75849b', 'ynhup1999@gmail.com'),
-(23, 3, 'Như', 'Như', 'c4ca4238a0b923820dcc509a6f75849b', 'meocon@gmail.com'),
-(26, 3, 'dat', 'dat', '81dc9bdb52d04dc20036dbd8313ed055', 'ntykaka1234@gmail.com');
+(23, 3, 'Như', 'Như', 'c4ca4238a0b923820dcc509a6f75849b', 'meocon@gmail.com');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -254,7 +282,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `groups`
@@ -272,7 +300,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
@@ -284,7 +312,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

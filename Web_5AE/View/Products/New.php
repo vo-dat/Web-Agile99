@@ -1,12 +1,12 @@
 <hr>
 <marquee>
-	<img src="images/a6.png" style ="height :180px; width : 180px">
-	<img src="images/a9.png" style ="height :180px; width : 180px">
-	<img src="images/a7.png" style ="height :180px; width : 180px">
-	<img src="images/a5.png" style ="height :180px; width : 180px">
-	<img src="images/a3.png" style ="height :180px; width : 180px">
-	<img src="images/a4.png" style ="height :180px; width : 180px">
-	<img src="images/a8.png" style ="height :180px; width : 180px">
+	<img src="images/sugar.png" style ="height :180px; width : 180px">
+	<img src="images/gi.png" style ="height :180px; width : 180px">
+	<img src="images/bro.png" style ="height :180px; width : 180px">
+	<img src="images/bro.png" style ="height :180px; width : 180px">
+	<img src="images/tous.png" style ="height :180px; width : 180px">
+	<img src="images/bro.png" style ="height :180px; width : 180px">
+	<img src="images/bro.png" style ="height :180px; width : 180px">
 </marquee>
 <hr>
 

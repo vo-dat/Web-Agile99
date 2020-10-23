@@ -62,14 +62,13 @@
 ?>
 	<!--End content-->
 <hr/>
-
 <!-- team -->
 	<!-- //team -->
-<!--	<div class="team">
+	<!--
+	<div class="team">
 		<div class="container">
-			<h3>Team 5AE</h3>
+			<h3>Nhóm 99</h3>
 			<div class="wthree_team_grids">
-<div class="col-md-1 wthree_team_grid"> </div>
 				<div class="col-md-2 wthree_team_grid">
 					<img src="images/anh.jpg" style ="height :150px; width : 150px" alt=" " class="img-responsive" />
 					<h4><span>Trâm Anh<span></h4>
@@ -83,8 +82,8 @@
 					</div>
 				</div>
 				<div class="col-md-2 wthree_team_grid">
-					<img src="images/thao.jpg" style ="height :150px; width : 150px" alt=" " class="img-responsive" />
-					<h4><span>Thu Thảo</span></h4>
+					<img src="images/nhu.jpg" style ="height :150px; width : 150px" alt=" " class="img-responsive" />
+					<h4><span>Yến Như</span></h4>
 					<div class="agileits_social_button">
 						<ul>
 							<li><a href= "https://www.facebook.com/thumui1105"class="fa fa-facebook"></a></li>
@@ -107,8 +106,8 @@
 					</div>
 				</div>
 				<div class="col-md-2 wthree_team_grid">
-					<img src="images/hoa.jpg" alt=" "  style ="height :150px; width : 150px" class="img-responsive" />
-					<h4><span>Kim Hoa</span></h4>
+					<img src="images/nhu.jpg" alt=" "  style ="height :150px; width : 150px" class="img-responsive" />
+					<h4><span>Yến Như</span></h4>
 					<div class="agileits_social_button">
 						<ul>
 							<li><a href= "https://www.facebook.com/hoavo2904"class="fa fa-facebook"></a></li>
@@ -139,16 +138,15 @@
 			</div>
 		</div>
 	</div>
-	-->
+-->
 	<!-- //team -->
-	<!-- //team -->
-
+	<!-- //team -->	
 <div class="footer">
 		<div class="container">
 			<div class="w3_footer_grids">
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Liên hệ </h3>
-					<p> T E C H - Store</p>
+					<p>您可以 T E C H - Store</p>
 					<ul class="address">
 						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>280 An Dương Vương <span>Đại học Sư Phạm TP.HCM</span></li>
 						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">taotao@shop.com</a></li>
@@ -168,11 +166,11 @@
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Sản phẩm</h3>
 					<ul class="info"> 
-						<li><a href="https://localhost/Web_5AE/index.php?mod=products&act=resultcategory&id=2&name=B%C3%A1nh%20M%C3%AC">Bánh Mì </a></li>
-						<li><a href="https://localhost/Web_5AE/index.php?mod=products&act=resultcategory&id=3&name=C%C3%A0%20Ph%C3%AA">Cà Phê</a></li>
-						<li><a href="https://localhost/Web_5AE/index.php?mod=products&act=resultcategory&id=1&name=Tr%C3%A0">Trà</a></li>
-						<li><a href="https://localhost/Web_5AE/index.php?mod=products&act=resultcategory&id=5&name=Kh%C3%A1c">Khác</a></li>
-						
+						<li><a href="https://localhost/Web_5AE/index.php?mod=products&act=resultcategory&id=2&name=BIRTHDAY">BIRTHDAY </a></li>
+						<li><a href="https://localhost/Web_5AE/index.php?mod=products&act=resultcategory&id=1&name=DIET">DIET</a></li>
+						<li><a href="https://localhost/Web_5AE/index.php?mod=products&act=resultcategory&id=3&name=CUPCAKE">CUPCAKE</a></li>
+						<li><a href="https://localhost/Web_5AE/index.php?mod=products&act=resultcategory&id=5&name=DRINK">DRINK</a></li>
+						<li><a href="https://localhost/Web_5AE/index.php?mod=products&act=resultcategory&id=6&name=COMBO">Khác</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 w3_footer_grid">

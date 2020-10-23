@@ -67,7 +67,6 @@ EOD;
 						echo $chuoi;
 	}
 ?>
-                    </div> 
 				</div>
 			</div>		
 		</div>

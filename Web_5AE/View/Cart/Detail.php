@@ -1,6 +1,24 @@
 <div >
-<h2><span><a href="#">Chi tiết giỏ hàng</a></span></h2>
+    <div class="alert alert-success">
+  <strong style="font-size: 30px;margin-left: 40%">Chi Tiết Giỏ Hàng!</strong>
+</div>
+
 <p>
+
+    <form class="form" method="post" action="index.php?mod=order&act=add" onSubmit="return IsInsertOrder()">
+       
+        <div class="progress">
+  <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:40%">
+    Chọn Món
+  </div>
+  <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:30%">
+    Đặt hàng
+  </div>
+  <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:30%">
+    Thanh Toán
+  </div>
+</div>
+
 <table  cellpadding="0" cellspacing="0" class="table" width="100%">
     <thead class="thead-pink">
         <tr>
@@ -27,6 +45,9 @@ $sum=0;
 ?>
 <tr><td>Tổng tiền</td><td colspan="4"><?php echo number_format($sum,0);?></td></tr>
 </table>
-<center><a href="index.php?mod=order&act=add" class="btn btn-outline-primary">Đặt hàng</a></center>
+<center>
+    <a href="index.php" class="btn btn-outline-primary">Quay Lại</a>
+    <a href="index.php?mod=order&act=add" class="btn btn-outline-primary" style="margin-left: 10rem;">Đặt hàng</a>
+</center>
 </p>
 </div> 

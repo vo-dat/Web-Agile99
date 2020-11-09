@@ -1,15 +1,15 @@
 <div >
-<h2><a href="adminManager.php?mod=products&act=edit&id=<?php echo $id; ?>">Chỉnh sửa sản phẩm</a></h2>
+<h2><a style="text-decoration: none; margin-bottom: 30px; margin-left: 60px" href="adminManager.php?mod=products&act=edit&id=<?php echo $id; ?>">Chỉnh sửa sản phẩm</a></h2>
 
 <div style="min-height: 420px; margin-left: 60px; margin-top:30px;"> 
 		<form action="adminManager.php?mod=products&act=edit&id=<?php echo $id; ?>" method="post" class="form" enctype="multipart/form-data" >
 			<table cellpadding="10" style="border: 1px solid #ddd;">
 				<tr>
-					<td>Tên nhà sản phẩm</td>
+					<td style="font-weight: bold">Tên nhà sản phẩm</td>
 					<td><input type="text" name="txtProductName" id="txtProductName" value="<?php echo $row['ProductName']; ?>"/></td>
 				</tr>
 				<tr>
-					<td>Nhà cung cấp (*)</td>
+					<td style="font-weight: bold">Nhà cung cấp (*)</td>
 					<td>
 						<select name="slManufacturer">
 				            <?php
@@ -27,7 +27,7 @@
 			    	</td>
 				</tr>
 				<tr>
-					<td>Thể loại (*)</td>
+					<td style="font-weight: bold">Thể loại (*)</td>
 					<td>
 				        <select name="slCategory">
 				            <?php
@@ -46,15 +46,15 @@
 				</tr>
 
 				<tr>
-					<td>Giá (*)</td>
+					<td style="font-weight: bold">Giá (*)</td>
 					<td><input type="text" name="txtPrice" id="txtPrice" value="<?php echo $row['Price']; ?>" /></td>
 				</tr>
 				<tr>
-					<td>Số lượng (*)/td>
+					<td style="font-weight: bold">Số lượng (*)</td>
 					<td><input type="text" name="txtQuantity" id="txtQuantity" value="<?php echo $row['Quantity']; ?>" /></td>
 				</tr>
 				<tr>
-					<td>Ảnh</td>
+					<td style="font-weight: bold">Ảnh</td>
 					<td><img src="Upload/<?php echo $row['ImageUrl'] ?>" width="100" /></td>
 				</tr>
 				<tr>
@@ -62,19 +62,18 @@
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td>Mô tả</td>
+					<td style="font-weight: bold">Mô tả</td>
 					<td><textarea name="txtDescription"><?php echo $row['Description']; ?></textarea></td>
 				</tr>
 				<tr>
-					<td>Chi tiết</td>
+					<td style="font-weight: bold">Chi tiết</td>
 					<td><textarea id="txtBody" name="txtBody" cols="70" rows="5"></textarea></td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
-					<td><input type="submit" name="btnChange" id="btnChange" value="Đổi thông tin" /></td>
+					<td><input type="submit" name="btnChange" id="btnChange" value="Đổi thông tin" style="text-decoration: none" class= "btn btn-primary" /></td>
 				</tr>
-			</table> 
+			</table>
 		</form>
 	</div>
 </div>
-//v

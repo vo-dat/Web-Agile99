@@ -73,7 +73,8 @@
 					<td>&nbsp;</td>
 					<td><input type="submit" name="btnChange" id="btnChange" value="Đổi thông tin" /></td>
 				</tr>
-			</table>
+			</table> 
 		</form>
 	</div>
 </div>
+//v

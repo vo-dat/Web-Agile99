@@ -29,6 +29,14 @@ class User{
 		$sql="Update Users set GroupID=$groupID where UserID=$userID";
 		return $this->da->ExecuteQuery($sql);
 	}
+	function DeleteUser($id){
+		$sql = "Delete from users where UserID=$id";
+		return $this->da->ExecuteQuery($sql);
+	}
+	function EditUser($userID,$groupID){
+		$sql="Update Users set GroupID=$groupID where UserID=$userID";
+		return $this->da->ExecuteQuery($sql);
+	}
 	function __destruct(){
 		unset($this->da);
 	}

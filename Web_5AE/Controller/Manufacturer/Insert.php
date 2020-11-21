@@ -15,6 +15,6 @@
 			else
 				echo "<p class=\"error\">Thêm bị lỗi</p>";
 		}
-		echo "<p class=\"error\">Dữ liệu không hợp lệ</p>";
+		echo "<p style=\"color: red; margin-left: 90px\"class=\"error\">Dữ liệu không hợp lệ</p>";
 	}
 ?>

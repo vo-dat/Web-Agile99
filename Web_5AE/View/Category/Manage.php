@@ -28,5 +28,5 @@
 	?>
     </table>
 
-<p class="btn-more box noprint"><strong><a href="adminManager.php?mod=category&act=insert">Thêm</a></strong></p>
+<p class="btn-more box noprint"><strong><a href="adminManager.php?mod=category&act=insert" style="text-decoration: none" class="btn btn-primary">Thêm</a></strong></p>
 </div> <!-- /article --><hr class="noscreen">
